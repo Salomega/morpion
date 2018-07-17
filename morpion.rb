@@ -42,7 +42,7 @@ class Board
   end
 
   def play(player, value_x_o)   #TO DO : une méthode qui change la BoardCase jouée en fonction de la valeur du joueur (X, ou O)
-    puts "#{player} choisis ta case entre 0 et 8 "
+    puts "#{player.player_name} choisis ta case entre 0 et 8 "
     case_number = gets.chomp.to_i
     if  @board[case_number]  != "X" && @board[case_number] != "O" 
         @board[case_number] = value_x_o
@@ -52,25 +52,26 @@ class Board
     end
   end
 
-  def victory?   #TO DO : qui gagne ?
-    if @board[0] == @board[1] && @board[1] == @board[2] ||
-       @board[3] == @board[4] && @board[4] == @board[5] ||
+  def victory  #TO DO : qui gagne ?
+    if @board[0] == @board[1] && @board[1] == @board[2]  ||
+       @board[3] == @board[4] && @board[4] == @board[5]  ||
        @board[6] == @board[7] && @board[7] == @board[8] ||
        @board[0] == @board[3] && @board[3] == @board[6] ||
        @board[1] == @board[4] && @board[4] == @board[7] ||
        @board[2] == @board[5] && @board[5] == @board[8] ||
        @board[0] == @board[4] && @board[4] == @board[8] ||
-       @board[2] == @board[4] && @board[4] == @board[6] ||
+       @board[2] == @board[4] && @board[4] == @board[6] 
         true
-     else
-       return false
+    else
+      false
      end
   end
+  
 end
 
 class Player   
 
-  attr_accessor :name, :value_x_o
+  attr_accessor :player_name, :value_x_o
   attr_writer :a_gagne
   
   def initialize (player_name, value_x_o, a_gagne)  #TO DO : doit régler son nom, sa valeur, son état de victoire
@@ -82,51 +83,70 @@ end
 
 class Game
   def initialize     #TO DO : créé 2 joueurs, créé un board
+    puts"On va jouer au morpion!"
+    puts "le premier qui a un alignement gagne"
+    puts " "
     puts "Quel le nom du 1er joueur?"
     player1_name = gets.chomp
+    puts" "
 
     puts "Quel le nom du 2ème joueur?"
     player2_name = gets.chomp
+    puts" "
 
     @player1 = Player.new(player1_name, "X", "tu n'as pas encore gagné")
     @player2 = Player.new(player2_name, "O", "tu n'as pas encore gagné")
 
-    @boardx = Board.new
+    @board = Board.new
   end
 
   def go    # TO DO : lance la partie
+    puts" "
     puts"On va jouer au morpion!"
     puts "le premier qui a un alignement gagne"
     puts "C'est parti!"
+    puts "Voici le board vide: "
+    puts " "
     turn
   end
 
   def turn   #TO DO : affiche le plateau, demande au joueur il joue quoi, vérifie si un joueur a gagné, passe au joueur suivant si la partie n'est pas finie
     i = 0
     while i < 9
-      @boardx.to_s
+      @board.to_s
       
       if (i%2) == 0 
         joueur_i = @player1 
       else joueur_i = @player2
       end
 
-      @boardx.play(joueur_i, joueur_i.value_x_o )
-        if @boardx.victory?
-          puts "#{@joueur_i} a gagné !"
-          break
+      @board.play(joueur_i, joueur_i.value_x_o )
+        if @board.victory 
+          @board.to_s
+          puts "#{joueur_i.player_name} a gagné !"
+          i = 10
+
+        else 
+          i += 1
         end
-       
-      i += 1
 
         if i == 9
+         @board.to_s
          puts "la partie est terminée, match nul"
+         puts " "
         end
+    end
 
+            puts "Voulez-vous rejouer une partie? (Y/N)"
+        réponse = gets.chomp
+        if réponse == "Y" 
+          Game.new.go
+        elsif réponse =="N"
+          exit
+        else puts "Veuillez répondre par Y ou N "
+        end 
   end
 
 end
 
-jeu = Game.new
-jeu.go
-end
+Game.new.go
