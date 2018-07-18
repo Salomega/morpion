@@ -1,21 +1,21 @@
-#Salut cher correcteur, bienvenue sur mon super repo de jeu de Morpion (Tic Tac Toe)
+#Gros Titre
 
+##2eme Titre
 
-##Voici les règles du programme :
+###3eme Titre
 
-    le programme est à deux joueurs only (pas d'intelligence artificielle)
-    le programme doit commencer en demandant le prénom des joueurs
-    le programme doit afficher le plateau chaque tour (dans le terminal), puis demander au joueur auquel c'est le tour où ce dernier compte jouer
-    si un joueur gagne, le programme doit annoncer qui a gagné
-    s'il y a match nul, le programme doit annoncer qu'il y a match nul
+```sh
+ici on met du code genre
+$ ruby programme.rb
+```
 
+##On peut mettre une liste
+* Item 1
+* Item 2
+* Item 3
 
-##*Execution du programme :*
+[Ici lien page google](https://www.google.com/)
 
-Clone ou download tous les fichiers, puis lance ruby morpion.rb
-
-Pour info, le fichier "morpion_complet" reprend l'ensemble du code avant d'être divisé dans des classes.
-
-Fichier réalisé par Garance, Diane, Asma et Clyde
-
-###Have fun ! <3
+**et hop c'est fini**
+*et aussi en italique*
+_et aussi en souligné_
