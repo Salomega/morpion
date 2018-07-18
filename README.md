@@ -1,15 +1,15 @@
-#Gros Titre
+# Gros Titre
 
-##2eme Titre
+## 2eme Titre
 
-###3eme Titre
+### 3eme Titre
 
 ```sh
 ici on met du code genre
 $ ruby programme.rb
 ```
 
-##On peut mettre une liste
+## On peut mettre une liste
 * Item 1
 * Item 2
 * Item 3
@@ -17,5 +17,6 @@ $ ruby programme.rb
 [Ici lien page google](https://www.google.com/)
 
 **et hop c'est fini**
+
 *et aussi en italique*
-_et aussi en souligné_
+et aussi sans rien
